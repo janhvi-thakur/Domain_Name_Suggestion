@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hindi Domain Name Suggester</title>
+
+  <!--link external css file-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>Hindi Domain Name Suggester</h1>
+    <p class="subtitle">
+      Enter a website URL and description to generate meaningful Hindi domain names.
+    </p>
+
+    <form method="POST">
+
+      <label for="url">Website URL</label>
+      <input type="text" id="url" name="url" placeholder="https://www.cdac.in" required>
+
+      <label for="description">Company Description</label>
+      <textarea id="description" name="description" placeholder="Enter a brief description about the company"></textarea>
+
+      <button type="submit">Generate Suggestions</button>
+
+    </form>
+
+    {% if names %}
+    <div class="results">
+      <h2>Suggested Domain Names</h2>
+      <ul>
+        {% for name in names %}
+        <li>{{ name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+
+</body>
+</html>
+
